@@ -11,11 +11,5 @@ test8 = imread('.\origin\8.x-png');
 % tempData6 = intrans(test6);
 % motionBlur(test7);
 % test1=rgb2gray(test1);
-MN=[5 110];
-SE = strel('line', 10, 90);
-SE2 = strel('rectangle',MN);
-test = imerode(test1, SE);
-test = imdilate(test, SE2);
-test = rgb2gray(test);
-test(test<210) = 0;
-imshow(test);
+cutAlphabet(test1);
+    

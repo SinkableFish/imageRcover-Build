@@ -1,13 +1,15 @@
 function [ output_args ] = cutAlphabet( data )
-
+%分割车牌
 MN=[8 110];
 SE = strel('line', 10, 90);
 SE2 = strel('rectangle',MN);
-SE3 = strel('DISK', 1);
 test = imerode(data, SE);
+imwrite(test, '.\results\1-a.png', 'png');
 test = imdilate(test, SE2);
+imwrite(test, '.\results\1-b.png', 'png');
 test(test<210) = 0;
 test = im2bw(test);
+imwrite(test, '.\results\1-c.png', 'png');
 linkMatrix = bwlabel(test, 8);
 countNum = 1:max(max(linkMatrix));
 tempCount = histc(bwlabel(test,8), countNum);
@@ -20,9 +22,10 @@ binTest1 = im2bw(data);
 finalData = binTest1&linkMatrix;
 % finalData = imdilate(finalData,SE3);
 % imshow(finalData); 
- %至此，车牌区域提取完成
+% imwrite(finalData, '.\results\1.png', 'png');
+%至此，车牌区域提取完成
 
- %字符分割开始
+%字符分割开始
 linkMatrix2 = bwlabel(finalData, 8);
 maxValue = max(max(linkMatrix2));
 for i=1:maxValue

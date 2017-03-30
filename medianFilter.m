@@ -4,6 +4,5 @@ figure();
 tempData = ordfilt2(data(:,:,1),5,ones(3,3));%ÖĞÖµÂË²¨È¥Ôë¡£
 imshow(tempData);
 imwrite(tempData,'.\results\3.png','png');
-
 end
 

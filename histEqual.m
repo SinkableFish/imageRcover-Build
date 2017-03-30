@@ -11,6 +11,5 @@ saveas(gcf,'.\results\5-2.png')
 figure();
 imshow(g);
 imwrite(g,'.\results\5.png','png')
-
 end
 

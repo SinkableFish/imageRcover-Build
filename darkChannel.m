@@ -11,6 +11,7 @@ for i = 1:m
         darkImage(i,j) = min(tempData(i,j,:));
     end
 end
+imwrite(uint8(darkImage),'.\results\4-1.png', 'png');
 [m,n] = size(darkImage);
 N = floor(m*n/1000);
 maxGrayValue = max(max(darkImage));
@@ -38,7 +39,5 @@ finalImage = (temp-A(1))/max(tx, 0)+A(1);
 finalImage = uint8(finalImage);
 imshow(finalImage);
 imwrite(finalImage,'.\results\4.png','png')
-
-
 end
 
